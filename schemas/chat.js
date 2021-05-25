@@ -8,7 +8,7 @@ const chatSchema = new Schema({
   room: {
     type: ObjectId,
     required: true,
-    ref: "Room",
+    ref: "Room", // reference from Room Schema
   },
   user: {
     type: String,

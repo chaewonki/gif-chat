@@ -9,6 +9,7 @@ const Chat = require("../schemas/chat");
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {
+  //res.render("index");
   try {
     const rooms = await Room.find({});
     res.render("main", {

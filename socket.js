@@ -7,7 +7,7 @@ module.exports = (server, app, sessionMiddleware) => {
   /*
     'of' method grants namespace to Socket.IO
     Socket.IO connect '/' namespace basically but with 'of' method, it's possible to connect other namespace.
-    only with same namespace, data will be transmitted
+    only within same namespace, data will be transmitted
   */
   const room = io.of("/room");
   const chat = io.of("/chat");
@@ -23,12 +23,18 @@ module.exports = (server, app, sessionMiddleware) => {
     });
   });
 
+  //
   chat.on("connection", (socket) => {
     console.log("chat 네임스페이스에 접속");
+    // console.log("socket.request : ", socket.request);
+
     const req = socket.request;
     const {
       headers: { referer },
     } = req;
+    // console.log("req.headers : ", req.headers);
+    // to get roomId
+    // join and leave methods needs roomId
     const roomId = referer
       .split("/")
       [referer.split("/").length - 1].replace(/\?.+/, "");

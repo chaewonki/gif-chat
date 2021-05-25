@@ -17,7 +17,6 @@ block content
                         td= room.title
                         td= room.password ? '비밀방' : '공개방'
                         td= room.max
-                        //- td(style='color:' + room.owner) = room.owner
                         td(style='color:' + room.owner)= room.owner 
                         -var password = room.password ? 'true' :'false';
                         td: button(data-password=password data-id=room._id).join-btn 입장
