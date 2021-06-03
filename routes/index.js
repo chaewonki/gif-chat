@@ -53,6 +53,7 @@ router.get("/room/:id", async (req, res, next) => {
       req.flash("roomError", "존재하지 않는 방입니다.");
       return res.redirect("/");
     }
+    //
     if (room.password && room.password !== req.query.password) {
       req.flash("roomError", "비밀번호가 틀렸습니다.");
       return res.redirect("/");
